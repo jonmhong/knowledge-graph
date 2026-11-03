@@ -104,8 +104,24 @@ async function pollJob() {
   try {
     while (busy()) {
       await new Promise((r) => setTimeout(r, 1000));
-      const snap = await api(`/api/job?since=${state.job.lines.length}`).catch(() => null);
-      if (!snap) continue;
+      let snap;
+      try {
+        snap = await api(`/api/job?since=${state.job.lines.length}`);
+      } catch {
+        continue; // server briefly unreachable; keep waiting
+      }
+      if (!snap) {
+        // The server answered but has no job: Atlas was restarted mid-run, which
+        // kills the job. Say so instead of spinning forever.
+        state.job = {
+          ...state.job,
+          status: "error",
+          error: "Atlas was restarted while this was running, so it stopped partway. Please start it again.",
+        };
+        renderJobbar();
+        onJobFinished(state.job);
+        break;
+      }
       state.job = { ...snap, lines: state.job.lines.concat(snap.lines) };
       renderJobbar();
       updateLiveLog();
