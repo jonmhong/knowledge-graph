@@ -1,0 +1,36 @@
+#!/bin/bash
+# Launcher for the `atlas` MCP server. Register THIS script with your MCP
+# client, not .venv/bin/atlas-mcp -- see the two workarounds below.
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+# `python -m` puts the CURRENT directory first on sys.path. Without this cd, a
+# client that launches us from inside another checkout of Atlas would import
+# THAT checkout's code -- and read/write THAT checkout's vault.
+cd "$REPO_ROOT"
+
+# 1. PATH. GUI apps (Claude Desktop, etc.) don't inherit your
+#    interactive shell PATH, so the claude_cli backend's
+#    `subprocess.run(["claude", ...])` fails with "claude binary not found"
+#    unless its location is on PATH here. Add yours if `claude` lives elsewhere.
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+PYTHON="$REPO_ROOT/.venv/bin/python"
+if [[ ! -x "$PYTHON" ]]; then
+  echo "atlas-mcp: no venv at $REPO_ROOT/.venv -- run the install steps in README.md first" >&2
+  exit 1
+fi
+
+# 2. Architecture (Apple Silicon only). pydantic_core (a transitive fastmcp
+#    dependency) may only have an arm64-compiled component in the venv, and a
+#    client that spawns child processes under Rosetta/x86_64 crashes it on
+#    import before any MCP handshake -- surfacing to the client as an
+#    immediate, silent "Connection closed", not an error naming the cause.
+#    Note the test below asks sysctl about the HARDWARE, not `uname -m`:
+#    under Rosetta this script's own shell reports x86_64, so a `uname -m`
+#    guard would skip the very fix it is guarding.
+if [[ "$(uname -s)" == "Darwin" && "$(sysctl -n hw.optional.arm64 2>/dev/null)" == "1" ]]; then
+  exec arch -arm64 "$PYTHON" -m atlas.mcp_server "$@"
+fi
+
+exec "$PYTHON" -m atlas.mcp_server "$@"

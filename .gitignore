@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# secrets
+.env
+
+# OS
+.DS_Store
+
+# Obsidian local UI state (pure noise, changes on every click)
+universe/.obsidian/workspace.json
+universe/.obsidian/workspace-mobile.json
+
+# ---------------------------------------------------------------------------
+# Vault content that stays local to whoever runs this
+# ---------------------------------------------------------------------------
+# raw/ is INPUT ONLY -- your own articles, PDFs, clippings. Often large and
+# usually someone else's copyrighted text, so it never belongs in the repo.
+# The generated library/ + concepts/ notes are tracked so every ingest can be
+# reverted with git. They're YOUR wiki: keep them out of PRs to this project.
+universe/raw/*
+!universe/raw/.gitkeep
+
+# output/ is your personal Q&A history -- one file per question you asked.
+universe/output/*
+!universe/output/.gitkeep
+
+# Ingest bookkeeping: each knowledge graph keeps content hashes of its raw/
+# files in its own .atlas/ folder. Machine-local, and meaningless once raw/
+# isn't shared. (The demo TEMPLATE's manifest is committed on purpose: it's
+# what marks its 7 pre-built articles as already read.)
+universe/.atlas/
+# Machine-local UI state, e.g. whether the first-run tutorial has been done.
+atlas/state/*
+!atlas/state/.gitkeep
+
+# The working demo knowledge graph. Created from atlas/demo_template/ on first
+# launch and freely changed by whoever is learning on it; "Reset demo" restores
+# it. Never committed, so experiments never show up as repo changes.
+/demo/
+
+# Claude Code per-machine settings and session scratch
+.claude/
+
+# ---------------------------------------------------------------------------
+# Images and other binaries
+# ---------------------------------------------------------------------------
+# Obsidian drops pasted screenshots straight into the vault root. Keep the repo
+# text-only. If you ever genuinely need a doc asset, `git add -f path/to/it`.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.svg
+*.pdf
+*.mp4
+*.mov

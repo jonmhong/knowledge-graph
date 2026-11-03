@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "atlas": {
+      "command": "./atlas/bin/atlas-mcp",
+      "args": []
+    }
+  }
+}

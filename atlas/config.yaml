@@ -1,0 +1,25 @@
+vault:
+  root: universe
+  # Vault directories ingest reads from. Add more here if you want to keep
+  # different kinds of input apart (each must live under the vault root).
+  input_dirs: [raw]
+
+agents:
+  # extractor, linker, and index_updater are implemented as deterministic
+  # code (file parsing / graph bookkeeping) rather than LLM calls -- see
+  # SPEC.md. Only the roles below actually hit a model backend.
+  summarizer:
+    backend: claude_cli
+    model: default
+  categorizer:
+    backend: claude_cli
+    model: default
+  concept_synthesizer:
+    backend: claude_cli
+    model: default
+  retriever:
+    backend: claude_cli
+    model: default
+  writer:
+    backend: claude_cli
+    model: default

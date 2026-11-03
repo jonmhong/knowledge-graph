@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">◎</span> Atlas
+    </a>
+    <nav class="tabs" aria-label="Main">
+      <a href="#/" data-tab="home">Home</a>
+      <a href="#/add" data-tab="add">Add sources</a>
+      <a href="#/ask" data-tab="ask">Ask</a>
+      <a href="#/browse" data-tab="browse">Browse</a>
+      <a href="#/health" data-tab="health">Health check</a>
+      <a href="#/guide" data-tab="guide">Guide</a>
+    </nav>
+    <div class="graph-switch" id="graph-switch" role="group" aria-label="Which knowledge graph">
+      <button data-graph="demo">Demo</button>
+      <button data-graph="mine">My knowledge graph</button>
+    </div>
+  </header>
+
+  <div id="demobar" class="demobar" hidden>
+    <span>🧪 You're in the <strong>demo</strong>, a practice knowledge graph. Nothing here affects your own.</span>
+    <button id="demobar-switch" class="link">Switch to my knowledge graph →</button>
+  </div>
+
+  <div id="jobbar" class="jobbar" hidden>
+    <span class="spinner" aria-hidden="true"></span>
+    <span id="jobbar-label"></span>
+    <span id="jobbar-elapsed" class="muted"></span>
+    <a href="#/activity" class="jobbar-link">See progress</a>
+  </div>
+
+  <main id="main" tabindex="-1"></main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/static/app.js"></script>
+  <script src="/static/tour.js"></script>
+</body>
+</html>

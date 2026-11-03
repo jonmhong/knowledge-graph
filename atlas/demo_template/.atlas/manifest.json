@@ -1,0 +1,74 @@
+{
+  "items": {
+    "raw/attention-and-multitasking.md": {
+      "hash": "e576ae765e6aa03eb15512308baf8c711d63aa59593fa96c7b8658d5a286d07b",
+      "ingested_at": "2026-11-03T00:24:34.927642+00:00",
+      "primary_concepts": [
+        "attention-and-focus"
+      ],
+      "related_concepts": []
+    },
+    "raw/deliberate-practice.md": {
+      "hash": "9a56ba950fe29917d8a9b1ba8d246e4d20983e53d5881f817a4ec9a4aa99eef2",
+      "ingested_at": "2026-11-03T00:25:00.209273+00:00",
+      "primary_concepts": [
+        "deliberate-practice"
+      ],
+      "related_concepts": [
+        "attention-and-focus"
+      ]
+    },
+    "raw/desirable-difficulties.md": {
+      "hash": "8b7684277c38f6f6e2415d919ca1ce62b82772e55a66ef4f26cc6071257d23a7",
+      "ingested_at": "2026-11-03T00:25:24.750660+00:00",
+      "primary_concepts": [
+        "desirable-difficulties"
+      ],
+      "related_concepts": [
+        "deliberate-practice"
+      ]
+    },
+    "raw/how-habits-form.md": {
+      "hash": "f82a1685b73820cab35f697e54e53fa73f5bb73e1735dab5fb0474fcbefdaf48",
+      "ingested_at": "2026-11-03T00:25:50.118559+00:00",
+      "primary_concepts": [
+        "habit-formation"
+      ],
+      "related_concepts": [
+        "desirable-difficulties"
+      ]
+    },
+    "raw/retrieval-practice.md": {
+      "hash": "6e666379871055af31e6fb445c89e8d33f62f28e3cb7aab86821d1c8ede975e7",
+      "ingested_at": "2026-11-03T00:26:14.938670+00:00",
+      "primary_concepts": [
+        "retrieval-practice"
+      ],
+      "related_concepts": [
+        "desirable-difficulties"
+      ]
+    },
+    "raw/spaced-repetition.md": {
+      "hash": "dc7d5b9ba31935f806d7896158c3e0270fc13a546840fc052bef497def94b529",
+      "ingested_at": "2026-11-03T00:26:40.750944+00:00",
+      "primary_concepts": [
+        "spaced-repetition"
+      ],
+      "related_concepts": [
+        "retrieval-practice",
+        "desirable-difficulties"
+      ]
+    },
+    "raw/the-forgetting-curve.md": {
+      "hash": "1adc39683442f50a81ecd87363739d04fc553f604c1a0ba9ef932a53ae2d5cc1",
+      "ingested_at": "2026-11-03T00:27:10.356122+00:00",
+      "primary_concepts": [
+        "forgetting-curve"
+      ],
+      "related_concepts": [
+        "spaced-repetition",
+        "retrieval-practice"
+      ]
+    }
+  }
+}
